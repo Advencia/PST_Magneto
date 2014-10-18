@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="30dp" >
+
+	<TextView
+            android:id="@+id/textViewInscription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titre_inscription"
+           	android:gravity="center"
+           	android:textStyle="bold"
+           	android:textSize="20sp"
+           	android:textColor="#CC5500"
+           	android:layout_marginBottom="15dp"
+           	android:layout_marginTop="15dp"
+             />
+    
+    <EditText 
+        	android:id="@+id/editTextInscription1"
+        	android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/prenom"
+            android:inputType="text"
+           	android:layout_marginBottom="15dp">
+            <requestFocus />
+        </EditText>
+    
+    <EditText
+            android:id="@+id/editTextInscription2"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/adresse_email"
+            android:inputType="text"
+           	android:layout_marginBottom="15dp">
+            <requestFocus />
+        </EditText>
+ 
+    <EditText
+            android:id="@+id/editTextInscription3"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/mot_de_passe"
+            android:inputType="textPassword" 
+            android:layout_marginBottom="20dp">
+            <requestFocus />
+        </EditText> 
+    
+    <EditText
+            android:id="@+id/editTextInscription4"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/mot_de_passe_check"
+            android:inputType="textPassword" 
+            android:layout_marginBottom="20dp">
+            <requestFocus />
+        </EditText> 
+   
+    <Button
+            android:id="@+id/buttonInscription1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enregistrer_inscription_button" 
+            />
+
+    
+</LinearLayout>
+
