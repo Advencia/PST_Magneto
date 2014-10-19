@@ -29,7 +29,15 @@
         <activity 
             android:name="com.example.magneto.HomeActivity"
             android:label="@string/app_name"/>
-       
+       <activity 
+            android:name=".GalaActivity" 
+            android:label="@string/app_name"/>
+       <activity 
+            android:name=".ProfilActivity" 
+            android:label="@string/app_name"/>
+       <activity 
+            android:name=".ParticipantsActivity" 
+            android:label="@string/app_name"/>
     </application>
 
 </manifest>
