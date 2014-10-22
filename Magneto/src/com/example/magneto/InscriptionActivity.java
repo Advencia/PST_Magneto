@@ -20,16 +20,16 @@ public class InscriptionActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				EditText mdp1 = (EditText) findViewById(R.id.editTextInscription3);
-				EditText mdp2 = (EditText) findViewById(R.id.editTextInscription4);
+				//EditText mdp1 = (EditText) findViewById(R.id.editTextInscription3);
+				//EditText mdp2 = (EditText) findViewById(R.id.editTextInscription4);
 				
-				if(mdp1 == mdp2) {
+				//if(mdp1 == mdp2) {
 					Intent intent = new Intent(InscriptionActivity.this, HomeActivity.class);
 					startActivity(intent);
-				}
-				else {
-					Toast.makeText(getApplicationContext(), "mot de passe incorrect", Toast.LENGTH_LONG).show();
-				}
+				//}
+				//else {
+					//Toast.makeText(getApplicationContext(), "mot de passe different", Toast.LENGTH_LONG).show();
+			//	}
 				}
 		});
         

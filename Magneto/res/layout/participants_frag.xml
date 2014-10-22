@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical" >
+    
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="20sp"
+        android:text="@string/liste_participants"
+        android:textColor="#D473D4"
+        android:layout_gravity="left"
+        />
+
+    <ListView
+        android:id="@+id/listParticipants"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <item
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="marine"/>
+
+    </ListView>
+ 
 </LinearLayout>

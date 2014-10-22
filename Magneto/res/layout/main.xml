@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/adresse_email"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
            	android:layout_marginBottom="15dp">
             <requestFocus />
         </EditText>

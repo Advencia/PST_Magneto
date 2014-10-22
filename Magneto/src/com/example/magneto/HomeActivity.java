@@ -1,62 +1,75 @@
 package com.example.magneto;
-
-
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
 import android.app.Activity;
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
-
 
 public class HomeActivity extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+       // setContentView(R.layout.home);
         
-        TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+        ActionBar actionBar = getActionBar();
+        
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+ 
+        String label1 = getResources().getString(R.string.label1);
+        Tab tab = actionBar.newTab();
+        tab.setText(label1);
+        TabListener<GalaActivity> tl = new TabListener<GalaActivity>(this,label1, GalaActivity.class);
+        tab.setTabListener(tl);
+        actionBar.addTab(tab);
+ 
+        String label2 = getResources().getString(R.string.label2);
+        tab = actionBar.newTab();
+        tab.setText(label2);
+        TabListener<ProfilActivity> tl2 = new TabListener<ProfilActivity>(this,
+                label2, ProfilActivity.class);
+        tab.setTabListener(tl2);
+        actionBar.addTab(tab);
+ 
+    }
+
+	private class TabListener<T extends Fragment> implements ActionBar.TabListener {
+		private Fragment mFragment;
+		private final Activity mActivity;
+		private final String mTag;
+		private final Class<T> mClass;
 
 
-        TabSpec tab1 = tabHost.newTabSpec("First Tab");
-        TabSpec tab2 = tabHost.newTabSpec("Second Tab");
-        TabSpec tab3 = tabHost.newTabSpec("Third tab");
-
-       // Set the Tab name and Activity
-       // that will be opened when particular Tab will be selected
-        tab1.setIndicator("Gala");
-        tab1.setContent(new Intent(this,GalaActivity.class));
-       
-        tab2.setIndicator("Profil");
-        tab2.setContent(new Intent(this,ProfilActivity.class));
-
-        tab3.setIndicator("Participants");
-        tab3.setContent(new Intent(this,ParticipantsActivity.class));
-       
-        /** Add the tabs  to the TabHost to display. */
-        tabHost.addTab(tab1);
-        tabHost.addTab(tab2);
-        tabHost.addTab(tab3);
-
-	}
+	public TabListener(Activity activity, String tag, Class<T> clz) {
+		mActivity = activity;
+		mTag = tag;
+		mClass = clz;
+	}	
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		// Check if the fragment is already initialized
+		if (mFragment == null) {
+			// If not, instantiate and add it to the activity
+			mFragment = Fragment.instantiate(mActivity, mClass.getName());
+			ft.add(android.R.id.content, mFragment, mTag);
+		}
+		
+		else {
+			// If it exists, simply attach it in order to show it
+			ft.attach(mFragment);
+		}
+}
+
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		if (mFragment != null) {
+			// Detach the fragment, because another one is being attached
+			ft.detach(mFragment);
+		}
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		// User selected the already selected tab. Usually do nothing.
 	}
 }
+}
+	

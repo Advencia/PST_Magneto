@@ -17,4 +17,12 @@
 	<string name="Nom">Nom</string>
 	<string name="mot_de_passe_check">Confirmez mdp</string>
 	<string name="enregistrer_inscription_button">S\'enregistrer</string>
-</resources>
+	
+	<string name="liste_participants">Ont repondu present</string>
+	    
+	<string name="onglet_1">onglet 1</string>
+    <string name="label1">one</string>
+    <string name="label2">two</string>
+    <string name="body1"> body one</string>
+    <string name="body2">body two</string>
+	    </resources>
