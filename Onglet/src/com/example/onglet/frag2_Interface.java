@@ -19,9 +19,7 @@ public class frag2_Interface extends Fragment {
 	    @Override 
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
 	        // Inflate the layout for this fragment 
-	        return inflater.inflate( 
-
-	        getResources().getIdentifier("fragment" + id, "layout", container.getContext().getPackageName()), container, false); 
+	        return inflater.inflate( R.layout.frag2, container, false); 
 	    }     
 
 	     public String getName() { 

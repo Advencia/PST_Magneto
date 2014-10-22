@@ -20,10 +20,7 @@ public class ExempleFragment extends Fragment {
 	                Bundle savedInstanceState) { 
 	    
 	        // Inflate the layout for this fragment 
-	        return inflater.inflate( 
-
-	        getResources().getIdentifier("fragment" + id, "layout",
-	         container.getContext().getPackageName()), container, false); 
+	        return inflater.inflate( R.layout.frag1, container, false); 
 	    }     
 
 	        public String getName() { 
