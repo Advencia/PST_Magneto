@@ -1,75 +1,88 @@
 package com.example.magneto;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-
-public class HomeActivity extends Activity {
-	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-       // setContentView(R.layout.home);
-        
-        ActionBar actionBar = getActionBar();
-        
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
- 
-        String label1 = getResources().getString(R.string.label1);
-        Tab tab = actionBar.newTab();
-        tab.setText(label1);
-        TabListener<GalaActivity> tl = new TabListener<GalaActivity>(this,label1, GalaActivity.class);
-        tab.setTabListener(tl);
-        actionBar.addTab(tab);
- 
-        String label2 = getResources().getString(R.string.label2);
-        tab = actionBar.newTab();
-        tab.setText(label2);
-        TabListener<ProfilActivity> tl2 = new TabListener<ProfilActivity>(this,
-                label2, ProfilActivity.class);
-        tab.setTabListener(tl2);
-        actionBar.addTab(tab);
- 
-    }
-
-	private class TabListener<T extends Fragment> implements ActionBar.TabListener {
-		private Fragment mFragment;
-		private final Activity mActivity;
-		private final String mTag;
-		private final Class<T> mClass;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.Window;
+//import android.widget.Toast;
 
 
-	public TabListener(Activity activity, String tag, Class<T> clz) {
-		mActivity = activity;
-		mTag = tag;
-		mClass = clz;
-	}	
+public class HomeActivity extends Activity implements TabListener {
 	
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// Check if the fragment is already initialized
-		if (mFragment == null) {
-			// If not, instantiate and add it to the activity
-			mFragment = Fragment.instantiate(mActivity, mClass.getName());
-			ft.add(android.R.id.content, mFragment, mTag);
-		}
+	private GalaActivity frag1 = new GalaActivity("Gala", 1);
+	private ProfilActivity frag2 = new ProfilActivity("Profil", 2); 
+	private ParticipantsActivity frag3 = new ParticipantsActivity("Participants", 3); 
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+		setContentView(R.layout.home);
+
+	//Configuration de la barre d'onglet       
+    getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);       
+    getActionBar().addTab(getActionBar().newTab().setText(frag1.getName()).setTabListener(this));         
+    getActionBar().addTab(getActionBar().newTab().setText(frag2.getName()).setTabListener(this));  
+    getActionBar().addTab(getActionBar().newTab().setText(frag3.getName()).setTabListener(this));  
+	}
 		
-		else {
-			// If it exists, simply attach it in order to show it
-			ft.attach(mFragment);
-		}
-}
+	@Override 
+	public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
+		//Toast.makeText(this, tab.getText() + " selected", Toast.LENGTH_SHORT).show();       
 
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		if (mFragment != null) {
-			// Detach the fragment, because another one is being attached
-			ft.detach(mFragment);
-		}
+	      if(tab.getText().equals(frag1.getName())){              
+	         ft.replace(R.id.fragmentContainer, frag1);
+	      }
+	      else if(tab.getText().equals(frag2.getName())){
+	         ft.replace(R.id.fragmentContainer, frag2);
+	      }
+	      else if(tab.getText().equals(frag3.getName())){ 
+	         ft.replace(R.id.fragmentContainer, frag3);
+	      }
+	 } 
+
+	@Override
+	public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
+	     // Toast.makeText(this, tab.getText() + " unselected", Toast.LENGTH_SHORT).show();       
+
+	      if(tab.getText().equals(frag1.getName())){
+	         ft.remove(frag1);
+	      }
+	      else if(tab.getText().equals(frag2.getName())){
+	         ft.remove(frag2);
+	      }
+	      else if(tab.getText().equals(frag3.getName())){
+	         ft.remove(frag3);
+	      }
+	} 
+	
+	@Override
+	public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
+	     // Toast.makeText(this, tab.getText() + " unselected", Toast.LENGTH_SHORT).show();
 	}
 
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// User selected the already selected tab. Usually do nothing.
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
-}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
 }
 	

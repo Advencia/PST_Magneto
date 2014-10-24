@@ -5,15 +5,26 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
  
 public class GalaActivity extends Fragment {
  
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        return (LinearLayout) inflater.inflate(R.layout.gala_frag, container, false);
-    }
- 
+	 private String name; 
+	    
+	    public GalaActivity(String name, int id) { 
+	        super();         
+	        this.name = name;
+	    }
+	   
+	    @Override 
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
+	        // Inflate the layout for this fragment 
+
+	        return inflater.inflate( R.layout.gala_frag, container, false); 
+
+
+	    }     
+
+	     public String getName() { 
+	        return name;
+	    } 
 }

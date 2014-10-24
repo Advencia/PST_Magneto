@@ -1,12 +1,33 @@
 package com.example.magneto;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.app.Activity;
-import android.widget.ArrayAdapter;  
-import android.widget.ListView;  
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class ParticipantsActivity extends Activity {
-	@Override
+public class ParticipantsActivity extends Fragment {
+	 private String name; 
+	    
+	    public ParticipantsActivity(String name, int id) { 
+	        super();         
+	        this.name = name;
+	    }
+	   
+	    @Override 
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
+	        // Inflate the layout for this fragment 
+
+	        return inflater.inflate( R.layout.participants_frag, container, false); 
+
+
+	    }     
+
+	     public String getName() { 
+	        return name;
+	    } 
+	
+	/*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gala_frag);
@@ -29,5 +50,5 @@ public class ParticipantsActivity extends Activity {
        // Assigne adapter à ListView
        list.setAdapter(adapter); 
      
-	}
+	}*/
 }
