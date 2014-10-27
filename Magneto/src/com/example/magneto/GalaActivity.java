@@ -20,8 +20,6 @@ public class GalaActivity extends Fragment {
 	        // Inflate the layout for this fragment 
 
 	        return inflater.inflate( R.layout.gala_frag, container, false); 
-
-
 	    }     
 
 	     public String getName() { 

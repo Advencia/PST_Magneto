@@ -20,9 +20,7 @@
 	
 	<string name="liste_participants">Ont repondu present</string>
 	    
-	<string name="onglet_1">onglet 1</string>
-    <string name="label1">one</string>
-    <string name="label2">two</string>
-    <string name="body1"> body one</string>
-    <string name="body2">body two</string>
+	<string name="profil">Mon profil</string>
+	<string name="infos">Infos :</string>
+	<string name="mon_poste">Poste occupé</string>
 	    </resources>
