@@ -1,6 +1,7 @@
 package com.example.add_item;
 
 import java.util.ArrayList;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,5 +37,6 @@ public class MainActivity extends ListActivity {
 		btn.setOnClickListener(listener);
 		setListAdapter(adapter);
 	}
-
 }
+
+
