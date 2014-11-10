@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements TabListener {
 
-	private frag2_Interface frag1 = new frag2_Interface("Fragment 1", 1);
-	private ExempleFragment frag2 = new ExempleFragment("Fragment 2", 2); 
-	private ExempleFragment frag3 = new ExempleFragment("Fragment 3", 3); 
+	private frag1_Interface frag1 = new frag1_Interface("Fragment 1", 1);
+	private frag2_Interface frag2 = new frag2_Interface("Fragment 2", 2); 
+	private frag3_Interface frag3 = new frag3_Interface("Fragment 3", 3); 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainActivity extends Activity implements TabListener {
 	
 	@Override 
 	public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
-		Toast.makeText(this, tab.getText() + " selected", Toast.LENGTH_SHORT).show();       
+		//Toast.makeText(this, tab.getText() + " selected", Toast.LENGTH_SHORT).show();       
 
 	      if(tab.getText().equals(frag1.getName())){              
 	         ft.replace(R.id.fragmentContainer, frag1);
@@ -46,7 +46,7 @@ public class MainActivity extends Activity implements TabListener {
 
 	@Override
 	public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
-	      Toast.makeText(this, tab.getText() + " unselected", Toast.LENGTH_SHORT).show();       
+	     // Toast.makeText(this, tab.getText() + " unselected", Toast.LENGTH_SHORT).show();       
 
 	      if(tab.getText().equals(frag1.getName())){
 	         ft.remove(frag1);
@@ -61,7 +61,7 @@ public class MainActivity extends Activity implements TabListener {
 	
 	@Override
 	public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
-	      Toast.makeText(this, tab.getText() + " unselected", Toast.LENGTH_SHORT).show();
+	     // Toast.makeText(this, tab.getText() + " unselected", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
